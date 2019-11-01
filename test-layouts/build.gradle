@@ -54,6 +54,14 @@ dependencies {
     implementation project(':dbx')
     implementation project(':widgets')
 
+    // We need to explicitly add a kapt dependency for the data-binding compiler.
+    // See https://issuetracker.google.com/issues/126775542
+    kaptTest "androidx.databinding:databinding-compiler:3.6.0-beta02"
+
+    // We need to explicitly depend on LiveData for data-binding to work. Not sure why this
+    // doesn't transitively resolve
+    testImplementation "androidx.lifecycle:lifecycle-livedata:2.0.0"
+
     testImplementation project(':test-utils')
     testImplementation Libs.Kotlin.stdlib
     testImplementation Libs.junit

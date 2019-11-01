@@ -24,7 +24,7 @@ object Libs {
     // We need to use an old version of AGP since that controls which data-binding version
     // we use in dbx. Keeping one stable AGP version behind means we're not forcing people to
     // unnecessarily
-    const val androidGradlePlugin = "com.android.tools.build:gradle:3.4.0"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:3.6.0-beta02"
 
     const val gradleMavenPublishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.8.0"
 
