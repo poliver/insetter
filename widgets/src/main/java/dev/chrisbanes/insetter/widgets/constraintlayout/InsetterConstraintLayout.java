@@ -88,14 +88,13 @@ public class InsetterConstraintLayout extends ConstraintLayout {
       final View view = getChildAt(i);
       final ViewState state = (ViewState) view.getTag(R.id.insetter_initial_state);
       final LayoutParams lp = (LayoutParams) view.getLayoutParams();
-      Insetter.applyInsetsToView(
-          view,
-          insetsCompat,
-          state,
-          lp.systemWindowInsetsPaddingDimensions,
-          lp.systemWindowInsetsMarginDimensions,
-          lp.systemGestureInsetsPaddingDimensions,
-          lp.systemGestureInsetsMarginDimensions);
+      Insetter.builder()
+          .applySystemWindowInsetsToPadding(lp.systemWindowInsetsPaddingDimensions)
+          .applySystemWindowInsetsToMargin(lp.systemWindowInsetsMarginDimensions)
+          .applySystemGestureInsetsToPadding(lp.systemGestureInsetsPaddingDimensions)
+          .applySystemGestureInsetsToMargin(lp.systemGestureInsetsMarginDimensions)
+          .build()
+          .applyInsetsToView(view, insetsCompat, state);
     }
     return insetsCompat.toWindowInsets();
   }

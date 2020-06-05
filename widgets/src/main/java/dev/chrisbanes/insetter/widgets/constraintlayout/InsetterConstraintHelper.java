@@ -169,14 +169,13 @@ public class InsetterConstraintHelper extends ConstraintHelper {
       View view = container.getViewById(mIds[i]);
       final ViewState state = (ViewState) view.getTag(R.id.insetter_initial_state);
       if (state != null) {
-        Insetter.applyInsetsToView(
-            view,
-            insetsCompat,
-            state,
-            systemWindowInsetsPaddingDimensions,
-            systemWindowInsetsMarginDimensions,
-            systemGestureInsetsPaddingDimensions,
-            systemGestureInsetsMarginDimensions);
+        Insetter.builder()
+            .applySystemWindowInsetsToPadding(systemWindowInsetsPaddingDimensions)
+            .applySystemWindowInsetsToMargin(systemWindowInsetsMarginDimensions)
+            .applySystemGestureInsetsToPadding(systemGestureInsetsPaddingDimensions)
+            .applySystemGestureInsetsToMargin(systemGestureInsetsMarginDimensions)
+            .build()
+            .applyInsetsToView(view, insetsCompat, state);
       }
     }
 
